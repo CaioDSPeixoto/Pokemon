@@ -1,20 +1,41 @@
 import styles from '../styles/Home.module.css'
 
-import Head from 'next/head'
+import Image from 'next/image'
 
-export default function Home() {
+import Card from '../components/Card'
+
+export async function getStaticProps() {
+  
+  const maxPokemons = 20
+  const api = 'https://pokeapi.co/api/v2/pokemon/'
+
+  const res = await fetch(`${api}/?limit=${maxPokemons}`)
+  const data = await res.json()
+
+  // add pokmeon index
+  data.results.forEach((item, index) => {
+    item.id = index + 1
+  })
+
+  return {
+    props: {
+      pokemons: data.results,
+    },
+  }
+}
+
+export default function Home({ pokemons }) {
   return (
     <>
-      <Head>
-        <title>Página principal</title>
-        <meta name="keywords" content="Roupas, Calçados, Bonés"></meta>
-        <meta
-          name="description"
-          content="Encontre a melhor roupa para você"
-        ></meta>
-      </Head>
-      <h1 className={styles.title}>Hello World Next!</h1>
-      <img src="/images/city.jpg" alt="A noite de uma cidade" />
+      <div className={styles.title_container}>
+        <h1 className={styles.title}>Poke<span>Mon</span></h1>
+        <Image src="/images/pokeball.png" width="50" height="50" alt="Pokemon"></Image>
+      </div>
+      <div className={styles.pokemon_container}>
+        {pokemons.map((pokemon) => (
+          <Card key={pokemon.id} pokemon={pokemon} />
+        ))}
+        </div>
     </>
   )
 }
