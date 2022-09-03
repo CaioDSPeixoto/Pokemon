@@ -1,0 +1,28 @@
+.notfound {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.notfound .title {
+        font-size: 1.5em;
+        text-transform: capitalize;
+        background-color: #333;
+        color: #fff;
+        padding: 0.3em;
+        margin: 0.8em auto;
+        width: 300px;
+}
+
+.notfound .btn {
+    text-decoration: none;
+    background: #E33D33;
+    color: #fff;
+    padding: .7em 1.2em;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.4s;
+    margin-top: 2em;
+}
