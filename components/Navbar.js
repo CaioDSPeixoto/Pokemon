@@ -8,12 +8,13 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <Image src="/images/pokeball.png" width="30" height="30" alt="Pokeball" />
-        <h1>Pokemon</h1>
+        <Link href="/">
+          <a>
+            <h1>Poke<span>mon</span></h1>
+          </a>
+        </Link>
       </div>
       <ul className={styles.link_itens}>
-        <li>
-          <Link href="/">Home</Link>
-        </li>
         <li>
           <Link href="/about">Sobre</Link>
         </li>

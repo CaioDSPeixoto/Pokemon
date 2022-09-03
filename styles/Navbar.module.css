@@ -14,6 +14,15 @@
   align-items: center;
 }
 
+.logo a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo span {
+  color: #E33D33;
+}
+
 .logo h1 {
   margin-left: .5em;
 }

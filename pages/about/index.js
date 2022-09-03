@@ -7,9 +7,8 @@ export default function About() {
     <>
       <div className={styles.about}>
         <h1>Sobre o projeto</h1>
+        <Image src="/images/pokemons.png" width="200" height="200"></Image>
         <p>Texto aqui</p>
-
-        <Image src="/images/pokemons.png" width="300" height="300" alt="Pokemons" />
       </div>
     </>
   )
