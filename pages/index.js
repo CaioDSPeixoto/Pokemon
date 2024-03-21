@@ -6,7 +6,7 @@ import Card from '../components/Card'
 
 export async function getStaticProps() {
 
-  const maxPokemons = 200
+  const maxPokemons = 20
   const api = process.env.NEXT_URL_POKEMON
 
   const res = await fetch(`${api}/?limit=${maxPokemons}`)

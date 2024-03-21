@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../../styles/Pokemon.module.css'
 
 export const getStaticPaths = async() => {
-    const maxPokemons = 200
+    const maxPokemons = 20
     const api = process.env.NEXT_URL_POKEMON
 
     const res = await fetch(`${api}/?limit=${maxPokemons}`)
@@ -31,20 +31,16 @@ export const getStaticProps = async(context) => {
     const data = await res.json()
 
     return {
-        props: {pokemon: data}
+        props: {pokemon: data, urlImagem: `${process.env.NEXT_URL_IMAGE_POKEMON}${id}.png`}
     }
 }
 
-function GetUrlPokemon({idPokemon}){
-    return `${process.env.NEXT_URL_IMAGE_POKEMON}${idPokemon}.png`
-}
-
-export default function Pokemon({pokemon}) {
+export default function Pokemon({pokemon, urlImagem}) {
     return(
         <>
             <div className={styles.pokemon_container}>
                 <h1 className={styles.title}>{pokemon.name}</h1>
-                <Image src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`} height="200" width="200" alt={pokemon.name}/>
+                <Image src={`${urlImagem}`} height="200" width="200" alt={pokemon.name}/>
                 <div>
                     <h3>Número:</h3>
                     <p>{pokemon.id}</p>
