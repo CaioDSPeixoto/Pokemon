@@ -4,21 +4,23 @@
   margin: 0 auto;
 }
 
+.back_row {
+  max-width: 500px;
+  margin: 0 auto 0.5em;
+}
+
 .back_btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 1em;
-  padding: 0.4em 0.8em;
-  border: 2px solid #333;
-  border-radius: 5px;
-  transition: 0.3s;
+  color: #888;
+  font-size: 0.875em;
+  padding: 0.2em 0;
+  transition: color 0.2s;
 }
 
 .back_btn:hover {
-  background: #333;
-  color: #fff;
+  color: #E33D33;
 }
 
 .collection_btns {
