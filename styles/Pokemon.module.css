@@ -163,3 +163,18 @@
   font-weight: bold;
   text-align: right;
 }
+
+@media (max-width: 500px) {
+  .title {
+    width: 100%;
+    font-size: 1.8em;
+  }
+
+  .stats_section {
+    width: 100%;
+  }
+
+  .stat_name {
+    width: 100px;
+  }
+}

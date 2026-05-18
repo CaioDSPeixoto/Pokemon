@@ -9,3 +9,9 @@
   min-height: 70vh;
   padding: 1.5em;
 }
+
+@media (max-width: 480px) {
+  .main-container {
+    padding: 1em;
+  }
+}
