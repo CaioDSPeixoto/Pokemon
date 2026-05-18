@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 
 .title {
@@ -16,11 +16,150 @@
   color: #333;
 }
 
+.filters {
+  max-width: 1100px;
+  margin: 0 auto 2em;
+}
+
+.search_form {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.search_input {
+  flex: 1;
+  padding: 0.6em 1em;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-size: 1em;
+  outline: none;
+}
+
+.search_input:focus {
+  border-color: #E33D33;
+}
+
+.search_btn {
+  padding: 0.6em 1.4em;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search_btn:hover {
+  background: #E33D33;
+}
+
+.clear_btn {
+  padding: 0.6em 1.4em;
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.clear_btn:hover {
+  background: #555;
+}
+
+.types_filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.type_btn {
+  padding: 0.4em 0.9em;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.82em;
+  font-weight: bold;
+  transition: 0.2s;
+  opacity: 0.75;
+}
+
+.type_btn:hover,
+.active {
+  opacity: 1;
+  transform: scale(1.08);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.type_btn_normal   { background-color: #aa9; color: #333; }
+.type_btn_fire     { background-color: #f42; }
+.type_btn_water    { background-color: #39f; }
+.type_btn_grass    { background-color: #7c5; }
+.type_btn_electric { background-color: #fc3; color: #333; }
+.type_btn_ice      { background-color: #6cf; color: #333; }
+.type_btn_fighting { background-color: #b54; }
+.type_btn_poison   { background-color: #a59; }
+.type_btn_ground   { background-color: #db5; color: #333; }
+.type_btn_flying   { background-color: #89f; }
+.type_btn_psychic  { background-color: #f59; }
+.type_btn_bug      { background-color: #ab2; }
+.type_btn_rock     { background-color: #ba6; }
+.type_btn_ghost    { background-color: #66b; }
+.type_btn_dragon   { background-color: #76e; }
+.type_btn_dark     { background-color: #754; }
+.type_btn_steel    { background-color: #aab; color: #333; }
+.type_btn_fairy    { background-color: #e9e; color: #333; }
+
 .pokemon_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.empty {
+  text-align: center;
+  font-size: 1.2em;
+  color: #777;
+  margin: 3em auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.page_btn {
+  padding: 0.6em 1.4em;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.page_btn:hover:not(:disabled) {
+  background: #E33D33;
+}
+
+.page_btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.page_info {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
 }
