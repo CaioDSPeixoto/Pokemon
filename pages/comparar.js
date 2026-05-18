@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
+import PokemonInput from '../components/PokemonInput'
 import styles from '../styles/Comparar.module.css'
 
 const STAT_NAMES = ['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed']
@@ -25,6 +26,14 @@ export default function Comparar() {
   const [pokemonB, setPokemonB] = useState(null)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [allNames, setAllNames] = useState([])
+
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=1302')
+      .then(r => r.json())
+      .then(data => setAllNames(data.results.map(p => p.name)))
+      .catch(() => {})
+  }, [])
 
   async function handleCompare(e) {
     e.preventDefault()
@@ -39,21 +48,13 @@ export default function Comparar() {
         fetch(`https://pokeapi.co/api/v2/pokemon/${normalizeName(nameB)}`)
       ])
 
-      if (!resA.ok) {
-        setError(`Pokémon "${nameA}" não encontrado.`)
-        setLoading(false)
-        return
-      }
-      if (!resB.ok) {
-        setError(`Pokémon "${nameB}" não encontrado.`)
-        setLoading(false)
-        return
-      }
+      if (!resA.ok) { setError(`Pokémon "${nameA}" não encontrado.`); setLoading(false); return }
+      if (!resB.ok) { setError(`Pokémon "${nameB}" não encontrado.`); setLoading(false); return }
 
       const [dataA, dataB] = await Promise.all([resA.json(), resB.json()])
       setPokemonA(dataA)
       setPokemonB(dataB)
-    } catch (err) {
+    } catch {
       setError('Erro ao buscar Pokémon. Tente novamente.')
     } finally {
       setLoading(false)
@@ -74,21 +75,17 @@ export default function Comparar() {
       <h1 className={styles.title}>Comparar Pokémon</h1>
 
       <form className={styles.form} onSubmit={handleCompare}>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Nome do 1° Pokémon"
+        <PokemonInput
           value={nameA}
-          onChange={e => setNameA(e.target.value)}
-          required
+          onChange={setNameA}
+          placeholder="Nome do 1° Pokémon"
+          names={allNames}
         />
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Nome do 2° Pokémon"
+        <PokemonInput
           value={nameB}
-          onChange={e => setNameB(e.target.value)}
-          required
+          onChange={setNameB}
+          placeholder="Nome do 2° Pokémon"
+          names={allNames}
         />
         <button className={styles.btn} type="submit" disabled={loading}>
           {loading ? 'Buscando...' : 'Comparar'}
@@ -101,22 +98,12 @@ export default function Comparar() {
         <div className={styles.comparison}>
           <div className={styles.header_row}>
             <div className={styles.pokemon_header}>
-              <Image
-                src={pokemonA.sprites.front_default}
-                width={96}
-                height={96}
-                alt={pokemonA.name}
-              />
+              <Image src={pokemonA.sprites.front_default} width={96} height={96} alt={pokemonA.name} />
               <span className={styles.pokemon_name}>{capitalize(pokemonA.name)}</span>
             </div>
             <div className={styles.stat_label_center}></div>
             <div className={styles.pokemon_header}>
-              <Image
-                src={pokemonB.sprites.front_default}
-                width={96}
-                height={96}
-                alt={pokemonB.name}
-              />
+              <Image src={pokemonB.sprites.front_default} width={96} height={96} alt={pokemonB.name} />
               <span className={styles.pokemon_name}>{capitalize(pokemonB.name)}</span>
             </div>
           </div>
