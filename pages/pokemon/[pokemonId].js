@@ -63,9 +63,11 @@ export default function Pokemon({ pokemon, urlImagem, evolutionChain }) {
 
   return (
     <>
-      <div className={styles.pokemon_container}>
+      <div className={styles.back_row}>
         <Link href="/"><a className={styles.back_btn}>← Voltar</a></Link>
+      </div>
 
+      <div className={styles.pokemon_container}>
         <h1 className={styles.title}>{pokemon.name}</h1>
         <Image src={urlImagem} height="200" width="200" alt={pokemon.name} />
 
