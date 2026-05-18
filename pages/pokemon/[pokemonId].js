@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { useCollection } from '../../contexts/CollectionContext'
 import styles from '../../styles/Pokemon.module.css'
 
 export const getStaticPaths = async () => {
@@ -27,6 +28,11 @@ export const getStaticProps = async (context) => {
 }
 
 export default function Pokemon({ pokemon, urlImagem }) {
+  const { getStatus, toggle } = useCollection()
+  const status = getStatus(pokemon.id)
+
+  const ligaUrl = `https://www.ligapokemon.com.br/?view=cards&s=${encodeURIComponent(pokemon.name)}`
+
   return (
     <>
       <div className={styles.pokemon_container}>
@@ -34,6 +40,30 @@ export default function Pokemon({ pokemon, urlImagem }) {
 
         <h1 className={styles.title}>{pokemon.name}</h1>
         <Image src={urlImagem} height="200" width="200" alt={pokemon.name} />
+
+        <div className={styles.collection_btns}>
+          <button
+            className={`${styles.col_btn} ${status === 'tenho' ? styles.col_active_tenho : ''}`}
+            onClick={() => toggle(pokemon.id, pokemon.name, 'tenho')}
+          >
+            {status === 'tenho' ? 'Tenho (remover)' : 'Tenho'}
+          </button>
+          <button
+            className={`${styles.col_btn} ${status === 'quero' ? styles.col_active_quero : ''}`}
+            onClick={() => toggle(pokemon.id, pokemon.name, 'quero')}
+          >
+            {status === 'quero' ? 'Quero (remover)' : 'Quero'}
+          </button>
+        </div>
+
+        <a
+          href={ligaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.liga_btn}
+        >
+          Ver preco na Liga Pokemon
+        </a>
 
         <div>
           <h3>Número:</h3>

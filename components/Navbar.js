@@ -16,6 +16,9 @@ export default function Navbar() {
       </div>
       <ul className={styles.link_itens}>
         <li>
+          <Link href="/colecao">Coleção</Link>
+        </li>
+        <li>
           <Link href="/about">Sobre</Link>
         </li>
         <li>
