@@ -5,6 +5,18 @@ import Link from 'next/link'
 import { useCollection } from '../contexts/CollectionContext'
 import styles from '../styles/Colecao.module.css'
 
+const GENERATIONS = [
+  { label: 'Gen I',    min: 1,   max: 151  },
+  { label: 'Gen II',   min: 152, max: 251  },
+  { label: 'Gen III',  min: 252, max: 386  },
+  { label: 'Gen IV',   min: 387, max: 493  },
+  { label: 'Gen V',    min: 494, max: 649  },
+  { label: 'Gen VI',   min: 650, max: 721  },
+  { label: 'Gen VII',  min: 722, max: 809  },
+  { label: 'Gen VIII', min: 810, max: 905  },
+  { label: 'Gen IX',   min: 906, max: 1025 },
+]
+
 export default function Colecao() {
   const { collection, toggle, loaded } = useCollection()
   const [tab, setTab] = useState('tenho')
@@ -12,6 +24,15 @@ export default function Colecao() {
   const tenhoList = Object.entries(collection.tenho)
   const queroList = Object.entries(collection.quero)
   const current = tab === 'tenho' ? tenhoList : queroList
+
+  const genStats = GENERATIONS.map(gen => {
+    const total = gen.max - gen.min + 1
+    const have = Object.keys(collection.tenho).filter(id => {
+      const n = parseInt(id)
+      return n >= gen.min && n <= gen.max
+    }).length
+    return { ...gen, total, have, pct: Math.round((have / total) * 100) }
+  })
 
   return (
     <>
@@ -23,6 +44,23 @@ export default function Colecao() {
           {queroList.length} na lista de desejos
         </p>
       </div>
+
+      {loaded && (
+        <div className={styles.stats_section}>
+          <h2>Progresso por Geração</h2>
+          <p className={styles.summary}>{tenhoList.length} / 1025 Pokémon coletados</p>
+          {genStats.map(gen => (
+            <div key={gen.label} className={styles.gen_row}>
+              <span className={styles.gen_label}>{gen.label}</span>
+              <span className={styles.gen_count}>{gen.have}/{gen.total}</span>
+              <div className={styles.gen_bar_bg}>
+                <div className={styles.gen_bar} style={{ width: `${gen.pct}%` }} />
+              </div>
+              <span className={styles.gen_pct}>{gen.pct}%</span>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className={styles.tabs}>
         <button

@@ -1,0 +1,154 @@
+.page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.title {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 0.8em;
+}
+
+.form {
+  display: flex;
+  gap: 0.6em;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5em;
+}
+
+.input {
+  padding: 0.5em 1em;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.2s;
+  min-width: 180px;
+}
+
+.input:focus {
+  border-color: #333;
+}
+
+.btn {
+  padding: 0.5em 1.4em;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  background: #E33D33;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  text-align: center;
+  color: #E33D33;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.comparison {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.header_row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.pokemon_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.pokemon_name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  text-transform: capitalize;
+}
+
+.stat_table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.stat_row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.35em 0.6em;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.val_a {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.val_b {
+  text-align: left;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.stat_label {
+  text-align: center;
+  font-size: 0.85em;
+  color: #555;
+  text-transform: capitalize;
+  white-space: nowrap;
+  min-width: 110px;
+}
+
+.total_row {
+  background: #eee;
+  margin-top: 0.4em;
+  font-size: 1.05em;
+}
+
+.winner {
+  color: #2a8a2a;
+}
+
+.loser {
+  color: #c0392b;
+}
+
+@media (max-width: 480px) {
+  .form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input {
+    min-width: unset;
+  }
+
+  .stat_label {
+    min-width: 80px;
+    font-size: 0.75em;
+  }
+}

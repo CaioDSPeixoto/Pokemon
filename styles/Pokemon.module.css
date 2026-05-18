@@ -215,6 +215,17 @@
   text-align: right;
 }
 
+.evolution_section { margin: 1.5em auto 2em; }
+.evolution_section h3 { text-align: center; margin-bottom: 0.8em; }
+.evolution_chain { display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; gap: 0.3em; }
+.evolution_stage_wrapper { display: flex; align-items: center; gap: 0.3em; }
+.evolution_arrow { font-size: 1.4em; color: #aaa; }
+.evolution_stage { display: flex; flex-direction: column; gap: 0.4em; align-items: center; }
+.evolution_item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #333; padding: 0.4em; border-radius: 8px; transition: 0.2s; font-size: 0.78em; text-transform: capitalize; }
+.evolution_item:hover { background: #f0f0f0; }
+.evolution_current { background: #333; color: #fff; }
+.evolution_current:hover { background: #444; }
+
 @media (max-width: 500px) {
   .title {
     width: 100%;

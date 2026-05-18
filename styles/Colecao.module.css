@@ -127,6 +127,16 @@
   background: #E33D33;
 }
 
+.stats_section { margin-bottom: 2em; background: #f9f9f9; border-radius: 10px; padding: 1.2em; }
+.stats_section h2 { font-size: 1.1em; margin-bottom: 1em; color: #333; }
+.summary { font-size: 1.3em; font-weight: bold; color: #E33D33; margin-bottom: 1em; text-align: center; }
+.gen_row { display: grid; grid-template-columns: 60px 50px 1fr 36px; align-items: center; gap: 0.6em; margin-bottom: 0.6em; font-size: 0.85em; }
+.gen_label { font-weight: bold; color: #555; }
+.gen_count { color: #777; text-align: right; }
+.gen_bar_bg { background: #ddd; border-radius: 4px; height: 8px; overflow: hidden; }
+.gen_bar { height: 100%; background: #E33D33; border-radius: 4px; }
+.gen_pct { color: #555; font-size: 0.8em; }
+
 @media (max-width: 768px) {
   .item {
     width: calc(33.33% - 0.67em);
