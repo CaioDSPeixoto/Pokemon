@@ -47,3 +47,17 @@
 .link_itens a:hover {
   border-color: #fff;
 }
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 1.2em;
+  }
+
+  .link_itens li {
+    margin-right: 0.8em;
+  }
+
+  .link_itens a {
+    font-size: 0.9em;
+  }
+}

@@ -7,6 +7,7 @@ export default function Layout({ children }) {
       <>
         <Head>
             <link rel="shortcut icon" href="/images/favicon.ico" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <title>Pokemon</title>
         </Head>
         <Navbar />

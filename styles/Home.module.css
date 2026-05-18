@@ -163,3 +163,30 @@
   font-weight: bold;
   color: #333;
 }
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2em;
+  }
+
+  .pokemon_container {
+    justify-content: flex-start;
+    gap: 4%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search_form {
+    flex-wrap: wrap;
+  }
+
+  .search_input {
+    width: 100%;
+    flex: none;
+  }
+
+  .search_btn,
+  .clear_btn {
+    flex: 1;
+  }
+}
