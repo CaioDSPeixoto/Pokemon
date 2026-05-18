@@ -4,6 +4,18 @@ import Link from 'next/link'
 import { useCollection } from '../../contexts/CollectionContext'
 import styles from '../../styles/Pokemon.module.css'
 
+function extractChain(chain) {
+  const stages = []
+  function traverse(node, depth) {
+    if (!stages[depth]) stages[depth] = []
+    const id = parseInt(node.species.url.split('/').filter(Boolean).pop())
+    stages[depth].push({ name: node.species.name, id })
+    node.evolves_to.forEach(next => traverse(next, depth + 1))
+  }
+  traverse(chain, 0)
+  return stages
+}
+
 export const getStaticPaths = async () => {
   return { paths: [], fallback: 'blocking' }
 }
@@ -19,15 +31,31 @@ export const getStaticProps = async (context) => {
 
   const data = await res.json()
 
+  let evolutionChain = []
+  try {
+    const speciesRes = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+    if (speciesRes.ok) {
+      const species = await speciesRes.json()
+      const chainRes = await fetch(species.evolution_chain.url)
+      if (chainRes.ok) {
+        const chainData = await chainRes.json()
+        evolutionChain = extractChain(chainData.chain)
+      }
+    }
+  } catch (e) {
+    evolutionChain = []
+  }
+
   return {
     props: {
       pokemon: data,
-      urlImagem: `${process.env.NEXT_URL_IMAGE_POKEMON}${id}.png`
+      urlImagem: `${process.env.NEXT_URL_IMAGE_POKEMON}${id}.png`,
+      evolutionChain
     }
   }
 }
 
-export default function Pokemon({ pokemon, urlImagem }) {
+export default function Pokemon({ pokemon, urlImagem, evolutionChain }) {
   const { getStatus, toggle } = useCollection()
   const status = getStatus(pokemon.id)
 
@@ -125,6 +153,38 @@ export default function Pokemon({ pokemon, urlImagem }) {
             </div>
           ))}
         </div>
+
+        {evolutionChain.length > 1 && (
+          <div className={styles.evolution_section}>
+            <h3>Evolução:</h3>
+            <div className={styles.evolution_chain}>
+              {evolutionChain.map((stage, stageIndex) => (
+                <div key={stageIndex} className={styles.evolution_stage_wrapper}>
+                  {stageIndex > 0 && (
+                    <span className={styles.evolution_arrow}>→</span>
+                  )}
+                  <div className={styles.evolution_stage}>
+                    {stage.map(evo => (
+                      <Link key={evo.id} href={`/pokemon/${evo.id}`}>
+                        <a
+                          className={`${styles.evolution_item} ${evo.id === pokemon.id ? styles.evolution_current : ''}`}
+                        >
+                          <Image
+                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${evo.id}.png`}
+                            width={48}
+                            height={48}
+                            alt={evo.name}
+                          />
+                          <span className={styles.evolution_name}>{evo.name}</span>
+                        </a>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </>
   )

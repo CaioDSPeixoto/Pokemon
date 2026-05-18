@@ -19,6 +19,9 @@ export default function Navbar() {
           <Link href="/colecao">Coleção</Link>
         </li>
         <li>
+          <Link href="/comparar">Comparar</Link>
+        </li>
+        <li>
           <Link href="/about">Sobre</Link>
         </li>
         <li>
