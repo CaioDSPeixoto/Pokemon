@@ -31,7 +31,7 @@ export default function Pokemon({ pokemon, urlImagem }) {
   const { getStatus, toggle } = useCollection()
   const status = getStatus(pokemon.id)
 
-  const ligaUrl = `https://www.ligapokemon.com.br/?view=cards&s=${encodeURIComponent(pokemon.name)}`
+  const ligaUrl = `https://www.ligapokemon.com.br/?view=pokedex/pokemon&id=${pokemon.id}`
 
   return (
     <>
