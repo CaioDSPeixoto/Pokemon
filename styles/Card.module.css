@@ -45,6 +45,39 @@
     color: #fff
 }
 
+.collection_btns {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 0.8em;
+    width: 100%;
+}
+
+.col_btn {
+    flex: 1;
+    padding: 0.4em 0;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.col_btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.col_active_tenho {
+    background: #4a9e4a;
+    border-color: #4a9e4a;
+}
+
+.col_active_quero {
+    background: #E33D33;
+    border-color: #E33D33;
+}
+
 @media (max-width: 600px) {
   .card {
     width: 48%;

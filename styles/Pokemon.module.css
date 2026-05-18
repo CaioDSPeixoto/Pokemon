@@ -21,6 +21,57 @@
   color: #fff;
 }
 
+.collection_btns {
+  display: flex;
+  gap: 0.6em;
+  justify-content: center;
+  margin: 1em 0 0.5em;
+}
+
+.col_btn {
+  padding: 0.5em 1.2em;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background: transparent;
+  color: #333;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.col_btn:hover {
+  background: #eee;
+}
+
+.col_active_tenho {
+  background: #4a9e4a;
+  border-color: #4a9e4a;
+  color: #fff;
+}
+
+.col_active_quero {
+  background: #E33D33;
+  border-color: #E33D33;
+  color: #fff;
+}
+
+.liga_btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #c8a400;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  transition: 0.3s;
+}
+
+.liga_btn:hover {
+  background: #a88900;
+}
+
 .title {
   font-size: 2.5em;
   text-transform: capitalize;
