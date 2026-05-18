@@ -1,16 +1,29 @@
 .about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  gap: 1.2em;
+}
+
+.about h1 {
+  font-size: 2em;
+  color: #E33D33;
 }
 
 .about p {
-    font-size: 2em;
-    margin-bottom: 1em;
+  font-size: 1em;
+  line-height: 1.7;
+  color: #444;
+  max-width: 500px;
 }
 
-.about a {
-    max-width: 500px;
-    margin: 0 auto 1.5m;
-    line-height: 1.4;
+.about code {
+  background: #eee;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
 }

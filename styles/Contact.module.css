@@ -1,0 +1,65 @@
+.contact {
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.contact h1 {
+  font-size: 2em;
+  color: #E33D33;
+  margin-bottom: 0.4em;
+}
+
+.contact > p {
+  color: #555;
+  margin-bottom: 2em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.field label {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.field input,
+.field textarea {
+  padding: 0.7em 1em;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: Helvetica;
+  resize: vertical;
+  transition: 0.3s;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #E33D33;
+}
+
+.form button {
+  align-self: flex-start;
+  padding: 0.7em 2em;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background: #E33D33;
+}
