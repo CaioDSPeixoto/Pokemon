@@ -13,20 +13,58 @@
 .back_btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.3em;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #E33D33 50%, #f5f5f5 50%);
+  border: 2.5px solid #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   text-decoration: none;
-  background: #E33D33;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.back_btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 2px);
+  height: 4px;
+  background: #1a1a1a;
+  z-index: 1;
+}
+
+.back_btn::after {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  border: 2px solid #1a1a1a;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.back_arrow {
+  position: relative;
+  z-index: 3;
   color: #fff;
-  font-size: 0.82em;
+  font-size: 1em;
   font-weight: bold;
-  padding: 0.35em 0.9em;
-  border-radius: 20px;
-  transition: background 0.2s, transform 0.2s;
+  line-height: 1;
+  margin-top: -4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
 .back_btn:hover {
-  background: #c42d23;
-  transform: translateX(-2px);
+  transform: scale(1.12);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
 }
 
 .collection_btns {
