@@ -63,11 +63,9 @@ export default function Pokemon({ pokemon, urlImagem, evolutionChain }) {
 
   return (
     <>
-      <Link href="/">
-        <a className={styles.back_btn} title="Voltar">
-          <span className={styles.back_arrow}>&#8592;</span>
-        </a>
-      </Link>
+      <div className={styles.back_row}>
+        <Link href="/"><a className={styles.back_btn}>← Voltar</a></Link>
+      </div>
 
       <div className={styles.pokemon_container}>
         <h1 className={styles.title}>{pokemon.name}</h1>
