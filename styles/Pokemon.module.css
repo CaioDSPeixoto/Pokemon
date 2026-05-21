@@ -4,46 +4,29 @@
   margin: 0 auto;
 }
 
+.back_row {
+  max-width: 500px;
+  margin: 0 auto 1em;
+  text-align: left;
+}
+
 .back_btn {
-  position: fixed;
-  top: 76px;
-  left: 1em;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(180deg,
-    #E33D33 0%, #E33D33 46%,
-    #222    46%, #222    54%,
-    #f5f5f5 54%, #f5f5f5 100%
-  );
-  border: 3px solid #222;
-  box-shadow: 0 3px 14px rgba(0,0,0,0.35);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.3em;
   text-decoration: none;
-  z-index: 50;
-  transition: transform 0.25s, box-shadow 0.25s;
+  background: #E33D33;
+  color: #fff;
+  font-size: 0.82em;
+  font-weight: bold;
+  padding: 0.35em 0.9em;
+  border-radius: 20px;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .back_btn:hover {
-  transform: scale(1.12) rotate(-20deg);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
-
-.back_arrow {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2.5px solid #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8em;
-  font-weight: bold;
-  color: #222;
-  line-height: 1;
+  background: #c42d23;
+  transform: translateX(-2px);
 }
 
 .collection_btns {
